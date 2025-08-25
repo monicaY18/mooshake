@@ -1,0 +1,225 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MooShake — Fresh, Fun, Delicious Milkshakes</title>
+  <meta name="description" content="Hand-crafted milkshakes made with real fruit, premium cocoa, and happy-cow milk. Order online for pickup or delivery." />
+  <meta name="theme-color" content="#ee2d6e" />
+  <style>
+    :root{
+      --bg:#fff9fb;
+      --card:#ffffff;
+      --ink:#161617;
+      --muted:#6b7280;
+      --brand:#ee2d6e;
+      --brand-2:#7c3aed;
+      --ring: 0 0 0 3px rgba(238,45,110,.25);
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(17,24,39,.08);
+      --shadow-sm: 0 4px 14px rgba(17,24,39,.06);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans",sans-serif;background:var(--bg);color:var(--ink);}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{width:min(1100px,92%);margin-inline:auto}
+    .btn{display:inline-flex;align-items:center;gap:.6rem;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;border:none;padding:.9rem 1.2rem;border-radius:999px;font-weight:700;box-shadow:var(--shadow-sm);cursor:pointer;transition:transform .15s ease, box-shadow .15s ease}
+    .btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
+    .btn.outline{background:transparent;border:2px solid var(--brand);color:var(--brand)}
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.7);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid #f2e6ef}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .logo{display:flex;align-items:center;gap:.6rem;font-weight:900;letter-spacing:.3px}
+    .logo-badge{width:34px;height:34px;border-radius:12px;background:radial-gradient( circle at 30% 30%, #fff 0 30%, rgba(255,255,255,.2) 30% 100%), linear-gradient(135deg,var(--brand),var(--brand-2));display:grid;place-items:center;color:#fff;box-shadow:var(--shadow-sm)}
+    .logo-badge svg{width:20px;height:20px}
+    .nav-links{display:flex;gap:1rem;align-items:center}
+    .nav-links a{padding:.55rem .85rem;border-radius:999px}
+    .nav-links a:hover{background:#f9dbe7}
+    .hero{padding:56px 0 24px}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:2rem}
+    .hero h1{font-size:clamp(2rem,3vw,3.2rem);line-height:1.1;margin:0 0 .6rem}
+    .hero p{color:var(--muted);margin:0 0 1.2rem}
+    .pill{display:inline-flex;align-items:center;gap:.5rem;background:#fff;border:1px dashed #ffd1e1;border-radius:999px;padding:.35rem .7rem;margin-bottom:.8rem;font-size:.9rem}
+    .stats{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1rem}
+    .stat{background:var(--card);border-radius:var(--radius);padding:.9rem 1rem;box-shadow:var(--shadow-sm);min-width:120px}
+    .stat strong{font-size:1.2rem}
+    .shake-card{position:relative;aspect-ratio:1/1;border-radius:28px;background:conic-gradient(from 180deg at 50% 50%, #fff 0 25%, #fff0 25% 50%, #fff 50% 75%, #fff0 75% 100%), linear-gradient(135deg,#ffd1e1,#e1d4ff);padding:14px;box-shadow:var(--shadow)}
+    .shake-ill{position:absolute;inset:12px;border-radius:22px;background:radial-gradient( circle at 60% 35%, rgba(255,255,255,.95) 0 40%, rgba(255,255,255,.6) 40% 100% );display:grid;place-items:center}
+    .shake-ill svg{width:80%;height:auto}
+
+    section{padding:42px 0}
+    .section-title{display:flex;align-items:center;gap:.6rem;margin:0 0 18px}
+    .section-title .dot{width:10px;height:10px;border-radius:999px;background:var(--brand)}
+
+    .grid{display:grid;gap:1rem}
+    .flavors{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .card{background:var(--card);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:.5rem}
+    .card .tag{font-size:.75rem;background:#f3f4f6;color:#374151;align-self:flex-start;padding:.25rem .5rem;border-radius:999px}
+
+    .nutrition{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    table{width:100%;border-collapse:collapse;border-radius:var(--radius);overflow:hidden}
+    th,td{padding:.7rem .8rem;border-bottom:1px solid #eee;font-size:.95rem;text-align:left}
+    thead th{background:#fdf2f8}
+
+    .cta{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:1rem;background:linear-gradient(120deg,#fff,#ffe4ed);padding:22px;border-radius:24px;box-shadow:var(--shadow)}
+
+    footer{padding:28px 0 48px;color:var(--muted)}
+    .footer-grid{display:grid;grid-template-columns:1fr auto;align-items:center}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero-grid,.cta{grid-template-columns:1fr}
+      .nutrition{grid-template-columns:1fr}
+      .flavors{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media (max-width: 600px){
+      .nav-links{display:none}
+      .flavors{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container nav" aria-label="Primary">
+      <a class="logo" href="#home">
+        <span class="logo-badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10c0-3 2-5 5-5 1.6 0 3 .6 4 1.6C14 5.6 15.4 5 17 5c3 0 5 2 5 5 0 4.5-4.5 8-10 11C8.5 18 4 14.5 4 10Z"/><path d="M12 7.5v6"/><path d="M9.5 10h5"/></svg>
+        </span>
+        MooShake
+      </a>
+      <div class="nav-links">
+        <a href="#flavors">Flavors</a>
+        <a href="#nutrition">Nutrition</a>
+        <a href="#order">Order</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="home" class="container">
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <span class="pill">🥤 Fresh • Real Fruit • Happy Cows</span>
+          <h1>Milkshakes that make your day.</h1>
+          <p>Small-batch shakes whirled with ripe fruit, premium cocoa, and farm-fresh milk. Zero artificial syrups. 100% smiles.</p>
+          <div style="display:flex; gap:.6rem; flex-wrap:wrap">
+            <a class="btn" href="#order">Order now</a>
+            <a class="btn outline" href="#flavors">See flavors</a>
+          </div>
+          <div class="stats" aria-label="Key highlights">
+            <div class="stat"><strong>12</strong><div class="muted">Seasonal flavors</div></div>
+            <div class="stat"><strong>4.9★</strong><div class="muted">Customer rating</div></div>
+            <div class="stat"><strong>0%</strong><div class="muted">Preservatives</div></div>
+          </div>
+        </div>
+        <div class="shake-card" aria-hidden="true">
+          <div class="shake-ill">
+            <!-- Cute cup illustration -->
+            <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of a milkshake">
+              <defs>
+                <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+                  <stop offset="0%" stop-color="#ffd6e5"/>
+                  <stop offset="100%" stop-color="#e7d9ff"/>
+                </linearGradient>
+              </defs>
+              <rect x="40" y="70" width="220" height="200" rx="22" fill="url(#g1)"/>
+              <rect x="60" y="90" width="180" height="160" rx="16" fill="#fff" stroke="#f3b0c7" stroke-width="6"/>
+              <path d="M95 110h110" stroke="#ffd1e1" stroke-width="10"/>
+              <circle cx="150" cy="200" r="48" fill="#ffe3ef" stroke="#f3b0c7" stroke-width="6"/>
+              <path d="M130 200c10-12 30-12 40 0" stroke="#ee2d6e" stroke-width="8" fill="none" stroke-linecap="round"/>
+              <rect x="130" y="40" width="40" height="40" rx="8" fill="#7c3aed"/>
+              <path d="M150 40v-20" stroke="#7c3aed" stroke-width="10" stroke-linecap="round"/>
+              <rect x="135" y="120" width="30" height="70" rx="6" fill="#ee2d6e"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="flavors">
+      <div class="section-title"><span class="dot"></span><h2 style="margin:0">Our Flavors</h2></div>
+      <p class="muted" style="color:var(--muted)">From classic crowd-pleasers to seasonal specials. Pick your happy.</p>
+      <div class="grid flavors" style="margin-top:14px">
+        <article class="card"><span class="tag">Classic</span><h3>Very Berry</h3><p>Strawberry & raspberry with a hint of vanilla bean.</p></article>
+        <article class="card"><span class="tag">Classic</span><h3>Choco Loco</h3><p>Rich Dutch cocoa, dark chocolate nibs, creamy milk.</p></article>
+        <article class="card"><span class="tag">Classic</span><h3>Mango Tango</h3><p>Alphonso mangoes, saffron drizzle, summer in a cup.</p></article>
+        <article class="card"><span class="tag">Seasonal</span><h3>Pistachio Bliss</h3><p>Roasted pista, a touch of cardamom, lightly sweet.</p></article>
+        <article class="card"><span class="tag">Seasonal</span><h3>Banoffee</h3><p>Banana, caramel swirls, biscuit crunch.</p></article>
+        <article class="card"><span class="tag">Vegan</span><h3>Choco Oat</h3><p>Oat milk, cacao, maple—not a compromise.</p></article>
+      </div>
+    </section>
+
+    <section id="nutrition">
+      <div class="section-title"><span class="dot"></span><h2 style="margin:0">Nutrition at a Glance</h2></div>
+      <div class="nutrition">
+        <div class="card">
+          <h3 style="margin:.2rem 0 .6rem">Per 300ml serving*</h3>
+          <table aria-describedby="nutri-note">
+            <thead><tr><th>Nutrient</th><th>Amount</th></tr></thead>
+            <tbody>
+              <tr><td>Energy</td><td>280–340 kcal</td></tr>
+              <tr><td>Protein</td><td>10–14 g</td></tr>
+              <tr><td>Calcium</td><td>30% DV</td></tr>
+              <tr><td>Sugars</td><td>24–32 g</td></tr>
+              <tr><td>Fat</td><td>6–10 g</td></tr>
+            </tbody>
+          </table>
+          <small id="nutri-note" class="muted">*Varies by flavor and customizations.</small>
+        </div>
+        <div class="card">
+          <h3 style="margin:.2rem 0 .6rem">Why it’s good</h3>
+          <ul style="margin:0 0 0 1rem; padding:0 0 0 1rem; line-height:1.6">
+            <li>Real fruit & premium ingredients</li>
+            <li>No artificial colors or preservatives</li>
+            <li>Vegetarian, vegan options available</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="order">
+      <div class="cta">
+        <div>
+          <h2 style="margin:.2rem 0 .4rem">Ready to sip happy?</h2>
+          <p class="muted" style="margin:0 0 1rem">Order via WhatsApp or drop a message—our blender squad is on standby!</p>
+          <div style="display:flex; gap:.6rem; flex-wrap:wrap">
+            <a class="btn" href="https://wa.me/0000000000" target="_blank" rel="noopener">Order on WhatsApp</a>
+            <a class="btn outline" href="mailto:orders@mooshake.example">Email us</a>
+          </div>
+        </div>
+        <div class="card">
+          <form aria-label="Quick message" onsubmit="event.preventDefault(); alert('Thanks! We\'ll get back to you shortly.'); this.reset();">
+            <label for="name">Name</label>
+            <input id="name" name="name" required placeholder="Your name" style="width:100%;margin:.35rem 0 10px;padding:.7rem .9rem;border-radius:12px;border:1px solid #e5e7eb;outline:none" onfocus="this.style.boxShadow='var(--ring)';" onblur="this.style.boxShadow='none'" />
+            <label for="msg">Message</label>
+            <textarea id="msg" name="msg" rows="3" required placeholder="I want 2x Mango Tango for pickup at 6 pm" style="width:100%;margin:.35rem 0 10px;padding:.7rem .9rem;border-radius:12px;border:1px solid #e5e7eb;outline:none" onfocus="this.style.boxShadow='var(--ring)';" onblur="this.style.boxShadow='none'"></textarea>
+            <button class="btn" type="submit">Send message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <small>© <span id="y"></span> MooShake Co. All rights reserved.</small>
+      <div style="display:flex; gap:.6rem">
+        <a href="#">Privacy</a>
+        <span aria-hidden="true">·</span>
+        <a href="#">Terms</a>
+        <span aria-hidden="true">·</span>
+        <a href="#">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Update year automatically
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+  <style>
+    /* tiny helpers */
+    .muted{color:var(--muted)}
+  </style>
+</body>
+</html>
